@@ -8,6 +8,7 @@ public class EnemyBullAI : MonoBehaviour {
   public float speed = 1.5f;
   public float rushTriggerDistance = 6f;
   public UnityEvent AroundPlayerEvent;
+  public Material Outline;
   public Material NormalHead;
   public Material RushHead;
 
@@ -84,7 +85,7 @@ public class EnemyBullAI : MonoBehaviour {
       lockedDistance = Target.position;
 
       isInRush = true;
-      rend.material = RushHead;
+      rend.materials = new Material[]{ RushHead, Outline };
     }
 
     if (Vector3.Distance(transform.position, lockedDistance) > 0.1f) {
@@ -92,7 +93,7 @@ public class EnemyBullAI : MonoBehaviour {
     } else {
       isInRush = false;
       canMove = false;
-      rend.material = NormalHead;
+      rend.materials = new Material[] { NormalHead };
       StartCoroutine(RushCooldown());
     }
   }
