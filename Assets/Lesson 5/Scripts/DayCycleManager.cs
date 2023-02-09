@@ -129,6 +129,6 @@ public class DayCycleManager : MonoBehaviour
         }
         _isSkyboxNeedToChange = !_isSkyboxNeedToChange;
         OnDayStateChenged?.Invoke(isDay);
-        Debug.Log("ChangeSkyBox");
+        //Debug.Log("ChangeSkyBox");
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09667681, g: 0.3515539, b: 0.71586275, a: 1}
+  m_IndirectSpecularColor: {r: 0.09670189, g: 0.3516521, b: 0.716001, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4705,7 +4705,7 @@ GameObject:
   - component: {fileID: 856911284}
   - component: {fileID: 856911283}
   m_Layer: 5
-  m_Name: TextHealth (1)
+  m_Name: TextScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6000,7 +6000,7 @@ GameObject:
   - component: {fileID: 1316099503}
   - component: {fileID: 1316099502}
   m_Layer: 5
-  m_Name: HealthValue (1)
+  m_Name: ScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6046,7 +6046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9999
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8750,6 +8750,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.059096355
       objectReference: {fileID: 0}
+    - target: {fileID: 6628216519159446618, guid: 121fe2523125d9f4a907d14201ac01ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6858724216318019587, guid: 121fe2523125d9f4a907d14201ac01ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10754,6 +10759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthValue: {fileID: 306294278}
+  ScoreValue: {fileID: 1316099502}
 --- !u!1 &1919750627
 GameObject:
   m_ObjectHideFlags: 0
@@ -12016,6 +12022,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5530188485109084948, guid: af1f3206e9c08a744bf6d5c70a0fcef0,
+        type: 3}
+      propertyPath: Score
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5530188485109084948, guid: af1f3206e9c08a744bf6d5c70a0fcef0,
         type: 3}
       propertyPath: PlayerHealthComponent

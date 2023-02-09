@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerStististicsDisplay : MonoBehaviour
-{
-    public TextMeshProUGUI HealthValue;
-    void Start()
-    {
-        UpdateHealth(PlayerStatistics.instance.GetHealth());
-        PlayerStatistics.instance.PlayerHealthComponent.GetDamageEvent += UpdateHealth;
-    }
+public class PlayerStististicsDisplay : MonoBehaviour {
+  public TextMeshProUGUI HealthValue;
+  public TextMeshProUGUI ScoreValue;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  void Start() {
+    UpdateHealth(PlayerStatistics.instance.GetHealth());
+    PlayerStatistics.instance.PlayerHealthComponent.GetDamageEvent += UpdateHealth;
+    PlayerStatistics.instance.GetScoreEvent += UpdateScore;
+  }
 
-    public void UpdateHealth(float hp)
-    {
-        HealthValue.text = hp + "";
-    }
+  // Update is called once per frame
+  void Update() {
+
+  }
+
+  public void UpdateHealth(float hp) {
+    HealthValue.text = hp + "";
+  }
+
+  public void UpdateScore(float score) {
+    ScoreValue.text = score + "";
+  }
 }

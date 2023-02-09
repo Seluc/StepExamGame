@@ -14,16 +14,25 @@ public class SpellFlashLight : MonoBehaviour {
   public event Action<Health> CollisionWithEnemy;
   public float Damage = 10f;
   private bool isActive = false;
+  private List<Collider> enemies = new List<Collider>();
+  private bool canStartDamage = false;
 
 
   void Start() {
     DayCycleManager.instance.OnDayStateChenged += UpdateFlashLightVisability;
+
+    StartCoroutine(DamageFromLight());
   }
 
   // Update is called once per frame
   void Update() {
     Rotate();
     transform.position = FlashLightTarget.position;
+
+    if(canStartDamage == true) {
+      canStartDamage = false;
+      StartCoroutine(DamageFromLight());
+    }
   }
 
   private void UpdateFlashLightVisability(bool isDay) {
@@ -41,17 +50,33 @@ public class SpellFlashLight : MonoBehaviour {
     transform.localRotation = Quaternion.Euler(currentRotation);
   }
 
+  private IEnumerator DamageFromLight() {
+    for (var i = 0; i < enemies.Count; ++i) {
+      if (enemies[i] == null) {
+        enemies.RemoveAt(i);
+        --i;
+        continue;
+      }
+
+      enemies[i].gameObject.GetComponent<Health>().SetDamage(Damage);
+    }
+
+    yield return new WaitForSeconds(1f);
+
+    canStartDamage = true;
+  }
+
   private void OnTriggerEnter(Collider other) {
     if (isActive) {
       if (other.gameObject.CompareTag("Enemy")) {
-        var hp = other.gameObject.GetComponent<Health>();
-        hp.SetDamage(Damage);
+        enemies.Add(other);
       }
     }
+  }
 
-    //В классе SpellFlashLight
-    //Реализовать урон по врагу
-    //Урон должен наноситься только ночью
-    //Урон не должен моментально убивать врагов
+  private void OnTriggerExit(Collider other) {
+    if(enemies.Contains(other) == true) {
+      enemies.Remove(other);
+    }
   }
 }

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour {
   public GameObject HitEffect;
   public TextMeshPro HealthLable;
   public event Action<float> GetDamageEvent;
+
   public float CurrentHealth {
     private set { health = value; }
     get { return health; }

@@ -8,7 +8,7 @@ public class BlueCristal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerStatistics.instance.Score += 1;
+            PlayerStatistics.instance.AddScore(1);
             Destroy(gameObject);
         }
     }
