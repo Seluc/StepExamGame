@@ -64,9 +64,8 @@ namespace lesson2 {
         Instantiate(DropPrefab, transform.position, Quaternion.identity);
         _isDroppedPrefab = true;
       }
-      transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180f));
+      ModelAnimator.SetTrigger("Die");
       StartCoroutine(SmoothClipping(0f, 1f, 1f));
-
     }
 
     private IEnumerator SmoothClipping(float start, float end, float duration) {
@@ -79,7 +78,6 @@ namespace lesson2 {
         yield return null;
       }
       SetMaterialsClipping(1f);
-
     }
 
     private void SetMaterialsClipping(float value) {
