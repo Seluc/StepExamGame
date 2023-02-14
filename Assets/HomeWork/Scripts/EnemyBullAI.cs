@@ -18,7 +18,6 @@ public class EnemyBullAI : MonoBehaviour {
   private Health health;
 
   private bool isDroppedPrefab;
-  private bool isMoveAnimation = false;
 
   private bool isInRush = false;
   private bool canMove = true;
@@ -94,7 +93,9 @@ public class EnemyBullAI : MonoBehaviour {
     rigidBody.isKinematic = true;
     rigidBody.useGravity = false;
     canMove = true;
+
     ModelAnimator.SetBool("Move", true);
+    ModelAnimator.SetBool("Idle", false);
   }
 
   private void Rush() {
@@ -111,8 +112,12 @@ public class EnemyBullAI : MonoBehaviour {
     } else {
       isInRush = false;
       canMove = false;
+
       rend.material = new Material(NormalBody);
+
       ModelAnimator.SetBool("Move", false);
+      ModelAnimator.SetBool("Idle", true);
+
       StartCoroutine(RushCooldown());
     }
   }

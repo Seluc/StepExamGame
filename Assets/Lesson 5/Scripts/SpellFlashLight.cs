@@ -11,7 +11,7 @@ public class SpellFlashLight : MonoBehaviour {
 
   public GameObject FlashLightHolder;
 
-  public event Action<Health> CollisionWithEnemy;
+  //public event Action<Health> CollisionWithEnemy;
   public float Damage = 10f;
   private bool isActive = false;
   private List<Collider> enemies = new List<Collider>();
@@ -24,7 +24,6 @@ public class SpellFlashLight : MonoBehaviour {
     StartCoroutine(DamageFromLight());
   }
 
-  // Update is called once per frame
   void Update() {
     Rotate();
     transform.position = FlashLightTarget.position;

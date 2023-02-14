@@ -20,7 +20,7 @@ namespace lesson2
 
         // gravity
         private float gravity = -9.87f;
-        private float verticalSpeed = 0;
+        //private float verticalSpeed = 0;
         private Vector3 playerVelocity;
         [SerializeField]
         private bool isPlayerGrounded;

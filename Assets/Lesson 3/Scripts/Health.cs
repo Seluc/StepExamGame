@@ -14,12 +14,12 @@ public class Health : MonoBehaviour {
   }
   [SerializeField]
   private float health = 100f;
-  private float _maxHealth = 100f;
+  private float maxHealth = 200f;
 
-  private bool _isAlive = true;
+  private bool isAlive = true;
   public bool IsAlive {
-    get => _isAlive;
-    private set { _isAlive = value; }
+    get => isAlive;
+    private set { isAlive = value; }
   }
 
   private void Start() {
@@ -28,13 +28,10 @@ public class Health : MonoBehaviour {
     }
   }
 
-  // Update is called once per frame
-  void Update() {
-
-  }
+  void Update() {}
 
   public void SetDamage(float damage) {
-    health = Mathf.Clamp(health - damage, 0, _maxHealth);
+    health = Mathf.Clamp(health - damage, 0, maxHealth);
 
     if (HitEffect) {
       Instantiate(HitEffect, transform.position, Quaternion.identity);

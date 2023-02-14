@@ -12,7 +12,7 @@ public class SpellBallCollisions : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision with " + collision.gameObject.tag);
+        //Debug.Log("Collision with " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
             var hp = collision.gameObject.GetComponent<Health>();
