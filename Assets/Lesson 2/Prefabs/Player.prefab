@@ -1011,6 +1011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67858d1bfdb1f114c93a5bfaf1546258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitEffect: {fileID: 5360222569053748511, guid: f6374281f41ac3843a6ade0831761bf3,
+    type: 3}
   HealthLable: {fileID: 2087251102473546888}
   health: 100
 --- !u!81 &9195592643234920402
@@ -1263,6 +1265,7 @@ MonoBehaviour:
   downLimit: 30
   FlashLightTarget: {fileID: 3878132746872884398}
   FlashLightHolder: {fileID: 8324802035472863400}
+  Damage: 10
 --- !u!136 &6628216519159446618
 CapsuleCollider:
   m_ObjectHideFlags: 0

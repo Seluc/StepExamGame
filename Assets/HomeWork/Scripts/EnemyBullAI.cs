@@ -13,6 +13,7 @@ public class EnemyBullAI : MonoBehaviour {
   public Animator ModelAnimator;
   public GameObject DropPrefab;
   public SkinnedMeshRenderer ModelMeshRenderer;
+  public AudioClip[] MovingSounds;
 
   private Rigidbody rigidBody;
   private Health health;
@@ -27,10 +28,14 @@ public class EnemyBullAI : MonoBehaviour {
   private SkinnedMeshRenderer rend;
   [SerializeField] private Transform body;
 
+  private AudioSource audioSource;
+
 
   private void Awake() {
     rigidBody = GetComponent<Rigidbody>();
     health = GetComponent<Health>();
+    audioSource = GetComponent<AudioSource>();
+
 
     rend = body.GetComponent<SkinnedMeshRenderer>();
   }
@@ -48,7 +53,8 @@ public class EnemyBullAI : MonoBehaviour {
     var distToTarget = Vector3.Distance(transform.position, Target.position);
 
     if ((distToTarget <= rushTriggerDistance || isInRush) && canMove) {
-      ModelAnimator.SetBool("Move", true); Rush();
+      ModelAnimator.SetBool("Move", true); 
+      Rush();
     } else if (distToTarget > 2f && !isInRush && canMove) {
       ModelAnimator.SetBool("Move", true);
       Move();
@@ -56,6 +62,15 @@ public class EnemyBullAI : MonoBehaviour {
     } else {
       Rotate();
       Stop();
+    }
+
+    Debug.Log(MovingSounds);
+    Debug.Log(audioSource.isPlaying);
+    if (MovingSounds != null && audioSource.isPlaying == false) {
+      var randI = Random.Range(0, MovingSounds.Length);
+
+      audioSource.clip = MovingSounds[randI];
+      audioSource.Play();
     }
   }
 

@@ -19,7 +19,11 @@ public class SpellFlashLight : MonoBehaviour {
 
 
   void Start() {
-    DayCycleManager.instance.OnDayStateChenged += UpdateFlashLightVisability;
+    if (DayCycleManager.instance != null) {
+      DayCycleManager.instance.OnDayStateChenged += UpdateFlashLightVisability;
+    } else {
+      isActive = true;
+    }
 
     StartCoroutine(DamageFromLight());
   }
